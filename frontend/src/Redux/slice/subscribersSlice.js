@@ -1,15 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Async action to subscribe a user
+// ✅ API_URL now properly handles development vs production
+const API_URL =
+  import.meta.env.MODE === "development"
+    ? import.meta.env.VITE_API_URL
+    : "/api/auth";
+
+// ✅ Async action to subscribe a user (expects an object parameter)
 export const subscribeUser = createAsyncThunk(
   "subscribers/subscribe",
-  async (email, { rejectWithValue }) => {
+  async ({ email }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/auth/subscribe`, // ✅ Uses Vite environment variable
-        { email }
-      );
+      const response = await axios.post(`${API_URL}/auth/subscribe`, { email });
       return response.data;
     } catch (error) {
       return rejectWithValue(
@@ -18,7 +21,6 @@ export const subscribeUser = createAsyncThunk(
     }
   }
 );
-
 const subscribersSlice = createSlice({
   name: "subscribers",
   initialState: {

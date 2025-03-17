@@ -1,18 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Async action for submitting the contact form
+// ✅ API_URL properly switches between development and production
+const API_URL =
+  import.meta.env.MODE === "development"
+    ? import.meta.env.VITE_API_URL
+    : "/api/auth";
+
+// ✅ Async action for submitting the contact form
 export const submitContactForm = createAsyncThunk(
   "contact/submit",
   async (contactData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/auth/contact`, // ✅ Uses Vite's environment variable syntax
-        contactData
-      );
+      const response = await axios.post(`${API_URL}/auth/contact`, contactData);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(
+        error.response?.data || "Failed to submit contact form"
+      );
     }
   }
 );
