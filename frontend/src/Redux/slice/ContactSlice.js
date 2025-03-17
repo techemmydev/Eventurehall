@@ -14,28 +14,25 @@ export const submitContactForm = createAsyncThunk(
   "contact/submit",
   async (contactData, { rejectWithValue }) => {
     try {
-      console.log("Contact Data:", contactData); // Debugging
-
-      // 1️⃣ Send booking to your backend
-      const backendResponse = await axios.post(
-        `${API_URL}/contact`,
-        contactData
-      );
-
-      // 2️⃣ Send booking to Web3Forms
+      // ✅ Send form data to Web3Forms
       const web3Response = await axios.post(WEB3FORMS_API_URL, {
-        access_key: WEB3FORMS_ACCESS_KEY, // Required API key
-        ...contactData, // Include all form fields
+        access_key: WEB3FORMS_ACCESS_KEY,
+        ...contactData, // Include form fields
       });
+
+      if (!web3Response.data.success) {
+        throw new Error("Web3Forms submission failed.");
+      }
+
+      // ✅ Send form data to backend
+      const backendResponse = await axios.post(API_URL, contactData);
 
       return {
         backend: backendResponse.data,
         web3forms: web3Response.data,
       };
     } catch (error) {
-      return rejectWithValue(
-        error.response?.data || "Failed to submit contact form"
-      );
+      return rejectWithValue(error.response?.data || "Submission failed.");
     }
   }
 );

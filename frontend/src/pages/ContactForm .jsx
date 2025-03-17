@@ -42,24 +42,17 @@ const ContactForm = () => {
         clientPhone: "",
         checkbox: false,
       });
-      setOpenModal(true); // Open the modal on success
+      setOpenModal(true);
       dispatch(resetStatus());
     }
 
     if (error) {
-      // Show error toast notification
       toast.error(error || "An error occurred. Please try again.", {
         position: "top-right",
         autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        className: "text-[12px] font-plus-jakarta-sans",
       });
     }
-  }, [success, dispatch]);
+  }, [success, error, dispatch]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -71,66 +64,20 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // ✅ Frontend validation
+
+    // ✅ Frontend Validation
     if (!formData.name || !formData.email || !formData.message) {
       toast.error("Please fill out all fields!", {
         position: "top-right",
         autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        className: "text-[12px] ",
       });
       return;
     }
 
+    // ✅ Send the form data to the backend
     dispatch(submitContactForm(formData));
-    try {
-      // Sending form data to Redux (optional)
-      await dispatch(submitContactForm(formData)).unwrap();
-
-      // ✅ Send email using Web3Forms
-      const web3formData = new FormData();
-      web3formData.append("access_key", import.meta.env.VITE_API_WEB3FORM); // Web3Forms API Key
-      web3formData.append("email", "eventhallfscs@gmail.com"); // Admin Email
-      web3formData.append("replyto", formData.email);
-      web3formData.append("subject", "📩 New Contact Form Submission!");
-      web3formData.append(
-        "message",
-        `You have received a new message!\n\n
-        📝 Name: ${formData.name}
-        ✉ Email: ${formData.email}
-        📞Contact: ${formData.clientPhone}
-        📩 Message: ${formData.message}\n\n
-        Best Regards,\nEventure Hall`
-      );
-
-      const res = await fetch(import.meta.env.VITE_API_URLWEB, {
-        method: "POST",
-
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(web3formData),
-      }).then((res) => res.json());
-
-      if (res.success) {
-        toast.success("Your message has been sent!", {
-          position: "top-right",
-          autoClose: 3000,
-        });
-        setFormData({ name: "", email: "", message: "", checkbox: false });
-        setOpenModal(true);
-      } else {
-        throw new Error("Failed to send message");
-      }
-    } catch (error) {
-      toast.error("An error occurred. Please try again.", {
-        position: "top-right",
-        autoClose: 3000,
-      });
-    }
   };
+
   return (
     <>
       {/* ToastContainer to display toast messages */}
