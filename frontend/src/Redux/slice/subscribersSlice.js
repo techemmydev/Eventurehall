@@ -12,7 +12,7 @@ export const subscribeUser = createAsyncThunk(
   "subscribers/subscribe",
   async ({ email }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API_URL}/auth/subscribe`, { email });
+      const response = await axios.post(`${API_URL}/subscribe`, { email });
       return response.data;
     } catch (error) {
       return rejectWithValue(
