@@ -1,19 +1,35 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// ✅ API_URL now properly handles development vs production
+// ✅ API_URL properly handles development vs production
 const API_URL =
   import.meta.env.MODE === "development"
     ? import.meta.env.VITE_API_URL
     : "/api/auth";
+
+const WEB3FORMS_API_URL = import.meta.env.VITE_API_URLWEB;
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_API_WEB3FORM;
 
 // ✅ Async action to subscribe a user (expects an object parameter)
 export const subscribeUser = createAsyncThunk(
   "subscribers/subscribe",
   async ({ email }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API_URL}/auth/subscribe`, { email });
-      return response.data;
+      // 1️⃣ Send subscription data to your backend
+      const backendResponse = await axios.post(`${API_URL}/subscribe`, {
+        email,
+      });
+
+      // 2️⃣ Send subscription data to Web3Forms
+      const web3Response = await axios.post(WEB3FORMS_API_URL, {
+        access_key: WEB3FORMS_ACCESS_KEY, // Required API key
+        email, // Include email field
+      });
+
+      return {
+        backend: backendResponse.data,
+        web3forms: web3Response.data,
+      };
     } catch (error) {
       return rejectWithValue(
         error.response?.data?.error || "Subscription failed"
@@ -21,6 +37,7 @@ export const subscribeUser = createAsyncThunk(
     }
   }
 );
+
 const subscribersSlice = createSlice({
   name: "subscribers",
   initialState: {
