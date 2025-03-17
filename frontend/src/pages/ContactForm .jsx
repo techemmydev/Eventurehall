@@ -109,7 +109,9 @@ const ContactForm = () => {
 
       const res = await fetch(import.meta.env.VITE_API_URLWEB, {
         method: "POST",
-        body: web3formData,
+
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(web3formData),
       }).then((res) => res.json());
 
       if (res.success) {
