@@ -5,7 +5,7 @@ import axios from "axios";
 const API_URL =
   import.meta.env.MODE === "development"
     ? import.meta.env.VITE_API_URL
-    : "/api/contact";
+    : "/api/auth";
 
 const WEB3FORMS_API_URL = import.meta.env.VITE_API_URLWEB;
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_API_WEB3FORM;
