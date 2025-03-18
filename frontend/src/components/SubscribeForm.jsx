@@ -17,7 +17,7 @@ const SubscribeForm = () => {
       return;
     }
     setEmail("");
-    dispatch(subscribeUser(email));
+    dispatch(subscribeUser({ email }));
   };
 
   // ✅ Move state updates and dispatch calls inside useEffect
