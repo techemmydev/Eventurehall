@@ -86,7 +86,7 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(submitContactForm(formData));
+    // dispatch(submitContactForm(formData));
     try {
       // Sending form data to Redux (optional)
       await dispatch(submitContactForm(formData)).unwrap();
