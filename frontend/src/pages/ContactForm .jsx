@@ -94,6 +94,7 @@ const ContactForm = () => {
       // ✅ Send email using Web3Forms
       const web3formData = new FormData();
       web3formData.append("access_key", import.meta.env.VITE_API_WEB3FORM); // Web3Forms API Key
+
       web3formData.append("email", "eventhallfscs@gmail.com"); // Admin Email
       web3formData.append("replyto", formData.email);
       web3formData.append("subject", "📩 New Contact Form Submission!");
@@ -110,7 +111,7 @@ const ContactForm = () => {
       const res = await fetch(import.meta.env.VITE_API_URLWEB, {
         method: "POST",
 
-        body: JSON.stringify(web3formData),
+        body: web3formData,
       }).then((res) => res.json());
 
       if (res.success) {
