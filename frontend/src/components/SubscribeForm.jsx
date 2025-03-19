@@ -39,10 +39,10 @@ const SubscribeForm = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
           <div className="max-w-xl lg:max-w-lg">
-            <h2 className="text-4xl font-semibold tracking-tight text-white font-plus-jakarta-sans">
+            <h2 className="text-3xl font-semibold tracking-tight text-white font-plus-jakarta-sans">
               Stay Ahead with Our Exclusive Insights!
             </h2>
-            <p className="mt-4 text-lg text-gray-300 font-plus-jakarta-sans">
+            <p className="mt-4 text-[12px] text-gray-300 font-plus-jakarta-sans">
               Subscribe to get the latest updates, expert tips, and exclusive
               offers delivered straight to your inbox. Be the first to know
               about new trends and opportunities!

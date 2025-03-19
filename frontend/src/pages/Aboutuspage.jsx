@@ -11,6 +11,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import TeamSection from "../components/TeamSection";
 import FeedbackForm from "../components/FeedbackForm";
 import axios from "axios";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 const links = [{ name: "Meet the Team", href: "#" }];
 
@@ -37,7 +38,7 @@ const Aboutuspage = () => {
 
     // ✅ Fetch feedback safely
     axios
-      .get(`${import.meta.env.VITE_API_URL}/auth/feedbacks`)
+      .get(`${import.meta.env.VITE_API_URL}/api/auth/feedbacks`)
       .then((res) => {
         // console.log("API Response:", res.data); // Debugging the response
 
@@ -147,7 +148,9 @@ const Aboutuspage = () => {
                 </SwiperSlide>
               ))
             ) : (
-              <p className="text-center text-gray-500">No feedback available</p> // ✅ Handle empty case
+              <div className="text-center text-gray-500">
+                <LoadingSpinner />
+              </div> // ✅ Handle empty case
             )}
           </Swiper>
         </div>
