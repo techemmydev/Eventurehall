@@ -15,20 +15,22 @@ export default function FeedbackForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    toast.success("your feedback has been recored.", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      className: "text-[12px] font-plus-jakarta-sans",
-    });
+    try {
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/auth/feedback`,
+        formData
+      );
 
-    await axios.post(`${import.meta.env.VITE_API_URL}/auth/feedback`, formData);
+      toast.success("Your feedback has been recorded.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
 
-    setFormData({ name: "", review: "", img: "" });
+      setFormData({ name: "", review: "", img: "" });
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+      toast.error("Failed to submit feedback. Please try again.");
+    }
   };
 
   return (

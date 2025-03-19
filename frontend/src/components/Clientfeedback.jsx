@@ -17,10 +17,11 @@ const ClientFeedback = () => {
     AOS.init({ duration: 1000 });
 
     // ✅ Fetch feedback from backend safely
+    axios;
     axios
-      .get(`${import.meta.env.VITE_API_URL}/auth/feedbacks`)
+      .get(`${import.meta.env.VITE_API_URL}/api/auth/feedbacks`)
       .then((res) => {
-        // console.log("API Response:", res.data); // Debugging the response
+        console.log("API Response:", res.data); // Debugging the response
         setFeedbacks(Array.isArray(res.data?.data) ? res.data.data : []); // ✅ Ensure it's always an array
       })
       .catch((error) => console.error("Error fetching feedbacks:", error));
