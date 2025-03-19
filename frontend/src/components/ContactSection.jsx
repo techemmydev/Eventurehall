@@ -47,7 +47,7 @@ const ContactSection = () => {
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.0258733373967!2d3.3695381740458545!3d6.51840862322444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8c5170879e7d%3A0x247e24b1d430bd15!2sYabatech%20Staff%20Quarter%20Block!5e0!3m2!1sen!2sng!4v1741888499453!5m2!1sen!2sng"
           width="100%"
-          height="320"
+          height="250"
           title="Responsive Google Map"
           // allowfullscreen=""
           loading="lazy"
