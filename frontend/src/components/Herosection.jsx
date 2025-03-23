@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Button from "./Button";
-
+import { ReactTyped } from "react-typed";
 // Import Low-Quality Placeholder Images (Optional for better UX)
 import placeholder from "../assets/img/heroimage6.avif"; // A very small low-res image
 import heroimage1 from "../assets/img/heroimage1.png";
@@ -48,17 +48,34 @@ const Herosection = () => {
       {/* Static Text Overlay */}
       <div className="absolute inset-0 flex items-center justify-center text-white bg-black opacity-70 text-lg font-bold z-10 px-4">
         <div
-          className="w-4/5 lg:w-[800px] text-center mt-8"
+          className="w-5/5 lg:w-[800px] text-center mt-8"
           data-aos="fade-right"
         >
-          <h1 className="text-xl sm:text-2xl lg:text-5xl font-bold leading-tight font-poppins">
+          {/* Display this on mobile screens */}
+          <h1 className="block sm:hidden text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight font-poppins">
             Welcome to Eventure Hall
           </h1>
-
-          <p className="text-[16px] sm:text-lg lg:text-2xl font-light leading-9 sm:leading-7 lg:leading-10 font-plus-jakarta-sans mb-4 sm:mb-6 lg:mb-10 sm:hidden ">
-            The perfect venue for any event, offering modern amenities &
-            top-notch service.
-          </p>
+          {/* Display Typed.js animation on larger screens */}
+          <ReactTyped
+            strings={[
+              "A stunning space for unforgettable events",
+              "Seamless experiences with premium amenities",
+              "Where every occasion becomes extraordinary",
+              "Celebrate in style with elegance and comfort",
+              "Creating memories that last a lifetime",
+              "A venue designed to inspire and impress",
+            ]}
+            typeSpeed={50}
+            backSpeed={50}
+            backDelay={2000}
+            loop
+            showCursor
+            cursorChar="|"
+            className="hidden sm:block text-xl sm:text-2xl lg:text-4xl font-bold leading-tight font-poppins"
+          />
+          {/* <h1 className="text-xl sm:text-2xl lg:text-5xl font-bold leading-tight font-poppins"">
+            Welcome to Eventure Hall
+          </h1> */}
 
           <p className="hidden sm:block text-[18px] lg:text-2xl font-light leading-7 lg:leading-10 font-poppins mb-6 lg:mb-10">
             Discover the perfect venue for your next event. Our event center
@@ -69,7 +86,7 @@ const Herosection = () => {
           {/* Buttons */}
           <div className="flex justify-center mt-4 sm:mt-8">
             <Link to={"/book"}>
-              <Button className="bg-[#5833F1] hover:bg-sky-700 w-[230px] h-[60px] text-white px-4 py-2 rounded-lg transition cursor-pointer font-light font-plus-jakarta-sans sm:hidden text-[20px]">
+              <Button className="bg-[#5833F1] hover:bg-sky-700 w-[270px] h-[80px] text-white px-4 py-2 rounded-lg transition cursor-pointer font-light font-plus-jakarta-sans sm:hidden text-[26px]">
                 Book for an Event
               </Button>
             </Link>

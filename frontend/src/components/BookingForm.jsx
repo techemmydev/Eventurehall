@@ -26,6 +26,7 @@ const BookingForm = () => {
     eventType: "",
     clientEmail: "",
     clientPhone: "",
+    eventMessage: "",
 
     eventDate: selectedDate || "",
   });
@@ -41,6 +42,7 @@ const BookingForm = () => {
         eventType: "",
         clientEmail: "",
         clientPhone: "",
+        eventMessage: "",
 
         eventDate: selectedDate || "",
       });
@@ -70,14 +72,15 @@ const BookingForm = () => {
       return;
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    // const phoneRegex = /^[0-9]{10}$/;
+    const phoneRegex = /^[0-9]{10}$/;
 
     if (
       !formData.clientFirstName ||
       !formData.clientLastName ||
       !formData.eventType ||
       !formData.clientEmail ||
-      !formData.clientPhone
+      !formData.clientPhone ||
+      !formData.eventMessage
     ) {
       alert("Please fill in all fields before booking.");
       return;
@@ -88,19 +91,19 @@ const BookingForm = () => {
       return;
     }
 
-    // if (!phoneRegex.test(formData.clientPhone)) {
-    //   toast.error("please provide a valid number e.g 8065592378", {
-    //     position: "top-right",
-    //     autoClose: 3000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     theme: "colored",
-    //     className: "text-[12px] font-plus-jakarta-sans",
-    //   });
-    //   return;
-    // }
+    if (!phoneRegex.test(formData.clientPhone)) {
+      toast.error("please provide a valid number e.g 8065592378", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        className: "text-[12px] font-plus-jakarta-sans",
+      });
+      return;
+    }
     try {
       await dispatch(createBooking(formData)).unwrap();
       const web3formData = new FormData();
@@ -252,6 +255,20 @@ const BookingForm = () => {
                   required
                 />
               </div>
+            </div>
+
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-gray-700 font-plus-jakarta-sans">
+                Message / Additional Requests
+              </label>
+              <textarea
+                name="eventMessage"
+                value={formData.eventMessage}
+                onChange={handleChange}
+                placeholder="Enter any additional details..."
+                className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-indigo-500 text-[12px] font-plus-jakarta-sans resize-none"
+                rows="4"
+              />
             </div>
 
             <div className="md:col-span-2">

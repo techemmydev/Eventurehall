@@ -190,7 +190,7 @@ const ContactForm = () => {
                 <label className="block text-sm font-medium text-gray-700">
                   Phone Number
                 </label>
-                <div className="flex items-center border rounded-md px-4 py-2 focus-within:ring-2 focus-within:ring-indigo-500">
+                <div className="flex items-center border rounded-md px-4 py-2 focus-within:ring-2 focus-within:ring-indigo-500 font-plus-jakarta-sans">
                   <span className="text-gray-500 text-[12px]">+234</span>
                   <input
                     type="tel"
@@ -218,7 +218,7 @@ const ContactForm = () => {
                   value={formData.message}
                   onChange={handleChange}
                   // required
-                  className="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none h-24 resize-none placeholder:text-[12px] text-[13px]"
+                  className="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none h-24 resize-none placeholder:text-[12px] text-[13px] font-plus-jakarta-sans"
                 ></textarea>
               </div>
 
