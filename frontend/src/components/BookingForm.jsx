@@ -82,12 +82,12 @@ const BookingForm = () => {
       !formData.clientPhone ||
       !formData.eventMessage
     ) {
-      alert("Please fill in all fields before booking.");
+      toast.warning("Please fill in all fields before booking.");
       return;
     }
 
     if (!emailRegex.test(formData.clientEmail)) {
-      alert("Please enter a valid email address.");
+      toast.warning("Please enter a valid email address.");
       return;
     }
 
@@ -124,6 +124,7 @@ const BookingForm = () => {
         👤 Client: ${formData.clientFirstName} ${formData.clientLastName}
         📞 Contact: ${formData.clientPhone}
         ✉ Email: ${formData.clientEmail}\n\n
+        📝 Message: ${formData.eventMessage}\n\n
         You can reply directly to this email to contact the client.\n\nBest regards,\n[Eventure Hall]`
       );
 
