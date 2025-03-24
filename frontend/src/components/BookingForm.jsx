@@ -123,7 +123,7 @@ const BookingForm = () => {
         🎉 Event Type: ${formData.eventType}
         👤 Client: ${formData.clientFirstName} ${formData.clientLastName}
         📞 Contact: ${formData.clientPhone}
-        ✉ Email: ${formData.clientEmail}\n\n
+        ✉ Email: ${formData.clientEmail}
         📝 Message: ${formData.eventMessage}\n\n
         You can reply directly to this email to contact the client.\n\nBest regards,\n[Eventure Hall]`
       );
