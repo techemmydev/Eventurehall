@@ -71,6 +71,7 @@ const BookingForm = () => {
       });
       return;
     }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^[0-9]{10}$/;
 
@@ -140,10 +141,18 @@ const BookingForm = () => {
         });
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again.", {
-        position: "top-right",
-        autoClose: 3000,
-      });
+      if (error.message === "Booking already exists for this date") {
+        toast.error(
+          "This date is already booked. Please select another date.",
+          {
+            position: "top-right",
+            autoClose: 3000,
+            theme: "colored",
+          }
+        );
+      } else {
+        toast.error("An error occurred. Please try again.");
+      }
     }
   };
 
