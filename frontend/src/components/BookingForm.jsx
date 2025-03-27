@@ -159,6 +159,9 @@ const BookingForm = () => {
   return (
     <div className="container mx-auto px-4 py-14 mt-10 font-plus-jakarta-sans">
       <ToastContainer />
+      {/* Show error message if booking fails */}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center lg:p-28">
         <div className="hidden lg:block">
           <img
