@@ -22,6 +22,11 @@ export const createBooking = createAsyncThunk(
         bookingData
       );
 
+      // If the backend detects a duplicate date, it should return an error
+      if (!backendResponse.data.success) {
+        throw new Error(backendResponse.data.message);
+      }
+
       // 2️⃣ Send booking to Web3Forms
       const web3Response = await axios.post(WEB3FORMS_API_URL, {
         access_key: WEB3FORMS_ACCESS_KEY, // Required API key
@@ -71,17 +76,19 @@ const BookinghallSlice = createSlice({
       .addCase(createBooking.fulfilled, (state, action) => {
         state.loading = false;
         state.success = true;
-        if (action.payload.eventDate) {
-          const parsedDate = new Date(action.payload.eventDate);
-          state.selectedDate = parsedDate.toISOString().split("T")[0]; // ✅ Store "YYYY-MM-DD"
-        } else {
-          state.selectedDate = null;
-        }
         state.booking = action.payload;
+
+        // ✅ Only update `selectedDate` if the booking was successful
+        if (action.payload.backend && action.payload.backend.bookingDetails) {
+          const parsedDate = new Date(
+            action.payload.backend.bookingDetails.eventDate
+          );
+          state.selectedDate = parsedDate.toISOString().split("T")[0]; // Store in "YYYY-MM-DD"
+        }
       })
       .addCase(createBooking.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload; // ✅ Now this stores the backend error
       });
   },
 });

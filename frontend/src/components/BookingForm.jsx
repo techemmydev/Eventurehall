@@ -51,7 +51,14 @@ const BookingForm = () => {
         dispatch(resetStatus());
       }, 3000);
     }
-  }, [success, dispatch]);
+    if (error) {
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "colored",
+      });
+    }
+  }, [success, error, dispatch]);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -141,7 +148,13 @@ const BookingForm = () => {
         });
       }
     } catch (error) {
-      if (error.message === "Booking already exists for this date") {
+      console.error("Booking error:", error);
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "An error occurred. Please try again.";
+
+      if (errorMessage.includes("This date is already booked")) {
         toast.error(
           "This date is already booked. Please select another date.",
           {
@@ -151,7 +164,11 @@ const BookingForm = () => {
           }
         );
       } else {
-        toast.error("An error occurred. Please try again.");
+        toast.error(errorMessage, {
+          position: "top-right",
+          autoClose: 3000,
+          theme: "colored",
+        });
       }
     }
   };
