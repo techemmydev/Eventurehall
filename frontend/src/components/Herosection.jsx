@@ -5,11 +5,11 @@ import Button from "./Button";
 import { ReactTyped } from "react-typed";
 // Import Low-Quality Placeholder Images (Optional for better UX)
 import placeholder from "../assets/img/heroimage6.avif"; // A very small low-res image
-import heroimage1 from "../assets/img/heroimage1.png";
-import heroimage2 from "../assets/img/heroimage2.png";
-import heroimage3 from "../assets/img/heroimage3.avif";
-import heroimage4 from "../assets/img/heroimage4.avif";
-import heroimage7 from "../assets/img/heroimage7.png";
+import heroimage1 from "../assets/img/picture1.jpg";
+import heroimage2 from "../assets/img/picture2.jpg";
+import heroimage3 from "../assets/img/picture3.jpg";
+import heroimage4 from "../assets/img/picture4.jpg";
+import heroimage7 from "../assets/img/picture5.jpg";
 import { Link } from "react-router";
 
 const images = [heroimage1, heroimage2, heroimage3, heroimage4, heroimage7];
