@@ -23,7 +23,10 @@ import image10 from "../assets/img/picture10.jpg";
 import image11 from "../assets/img/picture11.jpg";
 import image12 from "../assets/img/picture12.jpg";
 import image13 from "../assets/img/picture13.jpg";
-
+import image15 from "../assets/img/picture15.jpg";
+import image16 from "../assets/img/picture16.jpg";
+import image17 from "../assets/img/picture17.jpg";
+import image18 from "../assets/img/picture18.jpg";
 const EventGallery = () => {
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
@@ -38,7 +41,7 @@ const EventGallery = () => {
       <div className="container mx-auto px-4">
         {/* Title Section */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold">Event Highlights</h2>
+          <h2 className="text-3xl font-bold">Explore our Event Space</h2>
           <p className="text-gray-400 mt-2">
             Explore our memorable events captured in stunning visuals.
           </p>
@@ -72,6 +75,10 @@ const EventGallery = () => {
             image11,
             image12,
             image13,
+            image15,
+            image16,
+            image17,
+            image18,
           ].map((img, index) => (
             <SwiperSlide key={index} className="flex justify-center ">
               <img

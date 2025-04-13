@@ -1,6 +1,23 @@
 import React from "react";
 import { MapPin, Users, CalendarCheck } from "lucide-react"; // Lucide React Icons
-import hallimagebooking from "../../assets/img/hallimagebooking.png";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import hallimagebooking from "../../assets/img/Hallimage.png"; // Import your hall image
+import image8 from "../../assets/img/picture8.jpg";
+import image9 from "../../assets/img/picture9.jpg";
+import image10 from "../../assets/img/picture10.jpg";
+import image11 from "../../assets/img/picture11.jpg";
+import image12 from "../../assets/img/picture12.jpg";
+import image13 from "../../assets/img/picture13.jpg";
+import image15 from "../../assets/img/picture15.jpg";
+import image16 from "../../assets/img/picture16.jpg";
+import image17 from "../../assets/img/picture17.jpg";
+import image18 from "../../assets/img/picture18.jpg";
+
 import Button from "../../components/Button";
 import CalenderUi from "../../components/CalenderUi";
 import { Link } from "react-router";
@@ -54,7 +71,7 @@ const HallInformationDetails = () => {
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-indigo-600" />
-                <strong>Location:</strong> SABO YABA
+                <strong>Location:</strong> I FEDERAL CIVIC SERVICE CLUB
               </li>
               <li className="flex items-center gap-2">
                 <CalendarCheck className="w-5 h-5 text-red-500" />
@@ -94,12 +111,37 @@ const HallInformationDetails = () => {
           </div>
 
           {/* Right Section - Hall Image */}
-          <div className="flex justify-center">
-            <img
-              src={hallimagebooking}
-              alt="Eventure Hall Wedding Celebration"
-              className="w-full max-w-md rounded-lg shadow-lg hidden lg:block"
-            />
+          <div className="w-full max-w-md hidden lg:block">
+            <Swiper
+              modules={[Navigation, Autoplay, Pagination]}
+              spaceBetween={20}
+              slidesPerView={1}
+              navigation
+              loop
+              className="rounded-lg shadow-lg"
+            >
+              {[
+                hallimagebooking,
+                image8,
+                image9,
+                image10,
+                image11,
+                image12,
+                image13,
+                image15,
+                image16,
+                image17,
+                image18,
+              ].map((img, index) => (
+                <SwiperSlide key={index}>
+                  <img
+                    src={img}
+                    alt={`Hall View ${index + 1}`}
+                    className="w-full h-[400px] object-cover rounded-lg"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </div>

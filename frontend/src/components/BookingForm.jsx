@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Button from "../components/Button";
-// import hallimagebooking from "../assets/img/hallimagebooking.png";
+import hallimagebooking from "../assets/img/hallimage2.webp"; // Import your hall image
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -180,9 +180,12 @@ const BookingForm = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center lg:p-28">
         <div className="hidden lg:block">
           <img
-            src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjI4fHxib29raW5nJTIwcGhvbmV8ZW58MHx8MHx8fDA%3D"
+            // src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjI4fHxib29raW5nJTIwcGhvbmV8ZW58MHx8MHx8fDA%3D"
+            // alt="Event Hall"
+            src={hallimagebooking}
             alt="Event Hall"
-            className="w-full rounded-lg shadow-lg  "
+            loading="lazy"
+            className="w-full rounded-lg shadow-lg h-[500px] "
           />
         </div>
 
