@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import AOS from "aos";
-
+import { Target, ThumbsUp } from "lucide-react";
 import "aos/dist/aos.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -18,7 +18,7 @@ const links = [{ name: "Meet the Team", href: "#" }];
 const stats = [
   { name: "Events Hosted", value: 1200 },
   { name: "Happy Clients", value: 5000 },
-  { name: "Years in Service", value: 10 },
+  { name: "Years in Service", value: 2 },
   { name: "Venue Capacity", value: 500 },
 ];
 
@@ -105,7 +105,7 @@ const Aboutuspage = () => {
 
       {/* Testimonials Section */}
       <section
-        className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8"
+        className="relative isolate overflow-hidden bg-white px-6 py-20 sm:py-32 lg:px-8"
         data-aos="fade-up"
       >
         <div className="mx-auto max-w-2xl lg:max-w-4xl">
@@ -155,9 +155,53 @@ const Aboutuspage = () => {
           </Swiper>
         </div>
       </section>
+      <div className="px-4 py-8 max-w-6xl mx-auto space-y-12 font-plus-jakarta-sans">
+        {/* OUR SERVICE SECTION */}
+        <div
+          className="flex flex-col md:flex-row items-center justify-between gap-6 "
+          data-aos="fade-right"
+        >
+          {/* Text Content */}
+          <div className="md:w-1/2 space-y-3">
+            <h2 className="text-xl font-bold text-black border-l-4   border-indigo-600 pl-3">
+              Our Mission
+            </h2>
+            <p className="text-gray-700 text-justify">
+              We aim to create unforgettable experiences by offering beautiful
+              venues and comprehensive event planning services tailored to our
+              clients' needs. Your satisfaction is our priority.
+            </p>
+          </div>
+          {/* Icon */}
+          <div className="md:w-1/2 flex justify-center">
+            <ThumbsUp size={60} className="text-black" />
+          </div>
+        </div>
 
+        {/* OUR PRODUCT SECTION */}
+        <div
+          className="flex flex-col-reverse md:flex-row items-center justify-between gap-6"
+          data-aos="fade-left"
+        >
+          {/* Icon */}
+          <div className="md:w-1/2 flex justify-center">
+            <Target size={60} className="text-black" />
+          </div>
+          {/* Text Content */}
+          <div className="md:w-1/2 space-y-3">
+            <h2 className="text-xl font-bold text-black border-l-4 border-indigo-600 pl-3">
+              Our Vision
+            </h2>
+            <p className="text-gray-700 text-justify">
+              We believe in customer satisfaction, quality, integrity, and
+              creativity. These values guide us in every event we host, ensuring
+              a unique and memorable experience for our clients.
+            </p>
+          </div>
+        </div>
+      </div>
       {/* Client Trust Section */}
-      <div className="bg-white">
+      {/* <div className="bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8" data-aos="fade-up">
           <h2 className="text-center text-lg font-semibold text-gray-900">
             Trusted by Our Clients for Unforgettable Events at Eventure Hall
@@ -177,7 +221,7 @@ const Aboutuspage = () => {
             )}
           </div>
         </div>
-      </div>
+      </div> */}
 
       <FeedbackForm />
       <div ref={clipboardSectionRef} id="clipboardSection">

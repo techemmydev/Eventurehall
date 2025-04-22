@@ -3,21 +3,21 @@ import React from "react";
 const people = [
   {
     id: 1,
-    name: "Alice Johnson",
+    name: "Dr, hasstrup V.A",
     role: "Co-Founder / CEO",
     imageUrl:
       "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   {
     id: 2,
-    name: "Michael Smith",
+    name: "Chukwuma Emmanuel.C",
     role: "CTO / Lead Developer",
     imageUrl:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   {
     id: 3,
-    name: "Sophia Brown",
+    name: "Mr.Adebayo A.O",
     role: "Head of Marketing",
     imageUrl:
       "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",

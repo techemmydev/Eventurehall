@@ -7,7 +7,7 @@ import { useInView } from "react-intersection-observer"; // Import Intersection 
 const stats = [
   { id: 1, name: "Successful Events Hosted", value: 1200 },
   { id: 2, name: "Happy Clients", value: 5000 },
-  { id: 3, name: "Venues Available", value: 15 },
+  { id: 3, name: "Venues Available", value: 1 },
 ];
 
 export default function Stats() {
