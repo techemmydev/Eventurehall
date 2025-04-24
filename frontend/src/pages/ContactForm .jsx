@@ -252,7 +252,8 @@ const ContactForm = () => {
                         Privacy Policy
                       </DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="text-sm text-gray-700 space-y-4 mt-2 max-h-[400px] overflow-y-auto">
+
+                    <div className="text-sm text-gray-700 space-y-4 mt-2 max-h-[400px] overflow-y-auto">
                       <p>
                         At EventHall FCSC, we value your privacy and are
                         committed to protecting your personal information. When
@@ -296,7 +297,8 @@ const ContactForm = () => {
                         </a>{" "}
                         or call us at +234-813-942-1920 or +234-803-063-7504.
                       </p>
-                    </DialogDescription>
+                    </div>
+
                     <div className="flex justify-end mt-4">
                       <Button
                         className="bg-indigo-600 text-white px-4 py-2 rounded-lg"
