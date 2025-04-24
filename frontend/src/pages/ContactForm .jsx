@@ -29,6 +29,7 @@ const ContactForm = () => {
   });
 
   const [openModal, setOpenModal] = useState(false); // State for modal
+  const [showPrivacy, setShowPrivacy] = useState(false);
 
   const dispatch = useDispatch();
   const { loading, success, error } = useSelector((state) => state.contact);
@@ -236,13 +237,76 @@ const ContactForm = () => {
                 <label className="text-sm text-gray-600 lg:text-[12px]">
                   By continuing, you acknowledge and agree to our{" "}
                   <a
-                    href="#"
+                    onClick={() => setShowPrivacy(true)}
                     className="font-semibold text-indigo-600 hover:underline"
                   >
                     Privacy Policy
                   </a>{" "}
                   and Terms of Service.
                 </label>
+
+                <Dialog open={showPrivacy} onOpenChange={setShowPrivacy}>
+                  <DialogContent className="max-w-xl font-plus-jakarta-sans">
+                    <DialogHeader>
+                      <DialogTitle className="text-lg font-semibold">
+                        Privacy Policy
+                      </DialogTitle>
+                    </DialogHeader>
+                    <DialogDescription className="text-sm text-gray-700 space-y-4 mt-2 max-h-[400px] overflow-y-auto">
+                      <p>
+                        At EventHall FCSC, we value your privacy and are
+                        committed to protecting your personal information. When
+                        you visit our website or contact us, we may collect
+                        information such as your name, email address, phone
+                        number, and event preferences to help us provide
+                        tailored services. We also gather technical data like
+                        your IP address and browser type to improve your
+                        browsing experience.
+                      </p>
+                      <p>
+                        Your information is used strictly for responding to
+                        inquiries, processing bookings, sending important
+                        updates, and improving our services. We do not sell or
+                        share your personal data with third parties, and only
+                        authorized staff have access to your information. Our
+                        site may use cookies to enhance your experience, which
+                        you can manage through your browser settings.
+                      </p>
+                      <p>
+                        We may occasionally link to third-party websites for
+                        your convenience, but we are not responsible for their
+                        content or privacy practices. You have the right to
+                        access, correct, or request deletion of your data at any
+                        time, and you may opt out of marketing messages by
+                        contacting us. Our privacy practices are designed to
+                        comply with data protection regulations and prioritize
+                        your control over your information.
+                      </p>
+                      <p>
+                        By using our website, you agree to the terms outlined
+                        here. We may update these policies occasionally, and
+                        continued use means you accept any changes. If you have
+                        questions or concerns about your data, feel free to
+                        reach out to us at{" "}
+                        <a
+                          href="mailto:eventhallfcsc@gmail.com"
+                          className="text-indigo-600"
+                        >
+                          eventhallfcsc@gmail.com
+                        </a>{" "}
+                        or call us at +234-813-942-1920 or +234-803-063-7504.
+                      </p>
+                    </DialogDescription>
+                    <div className="flex justify-end mt-4">
+                      <Button
+                        className="bg-indigo-600 text-white px-4 py-2 rounded-lg"
+                        onClick={() => setShowPrivacy(false)}
+                      >
+                        Close
+                      </Button>
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
               {error && (
                 <p className="error">

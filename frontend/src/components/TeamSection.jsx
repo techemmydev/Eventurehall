@@ -3,33 +3,38 @@ import React from "react";
 const people = [
   {
     id: 1,
-    name: "Dr, hasstrup V.A",
+    name: "Dr. Haastrup A .Victor",
     role: "Co-Founder / CEO",
-    imageUrl:
-      "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   {
     id: 2,
     name: "Chukwuma Emmanuel.C",
     role: "CTO / Lead Developer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   {
     id: 3,
     name: "Mr.Adebayo A.O",
     role: "Head of Marketing",
-    imageUrl:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   {
     id: 4,
-    name: "James Williams",
+    name: "Cherish Adepeju",
+    role: "Team Lead / Head of Operations",
+  },
+  {
+    id: 5,
+    name: "Moses Oluwademilare",
     role: "Lead Designer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
 ];
+
+const getInitials = (name) => {
+  const trimmed = name.trim();
+  return (
+    trimmed.charAt(0).toUpperCase() +
+    trimmed.charAt(trimmed.length - 1).toUpperCase()
+  );
+};
 
 const TeamSection = () => {
   return (
@@ -49,13 +54,11 @@ const TeamSection = () => {
           className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2"
         >
           {people.map((person) => (
-            <li key={person.name}>
+            <li key={person.id}>
               <div className="flex items-center gap-x-6">
-                <img
-                  alt=""
-                  src={person.imageUrl}
-                  className="size-16 rounded-full"
-                />
+                <div className="flex items-center justify-center size-16 rounded-full bg-gray-900 text-white font-bold text-lg">
+                  {getInitials(person.name)}
+                </div>
                 <div>
                   <h3 className="text-base/7 font-semibold tracking-tight text-gray-900">
                     {person.name}

@@ -73,11 +73,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-2">
                 <FaPhone />
-                <span>+234-813-942-1920</span>
+                <span> +234-902-324-3956</span>
               </li>
               <li className="flex items-center space-x-2">
                 <FaEnvelope />
-                <span>info@h2allevents.com</span>
+                <span>eventhallfcsc@gmail.com </span>
               </li>
             </ul>
           </div>
@@ -105,7 +105,9 @@ export default function Footer() {
                 Terms & Conditions
               </DialogTitle>
               <DialogDescription className="text-sm text-gray-600 mt-2  font-plus-jakarta-sans">
-                Please read the terms and conditions carefully before
+                Please read the terms and conditions carefully before proceeding
+                with your booking. By confirming your reservation, you agree to
+                abide by these terms.
               </DialogDescription>
               {/* Removed the automatic <p> from DialogDescription by wrapping contents in a <div> instead */}
               <div className="mt-4 text-sm text-gray-700 space-y-4">
